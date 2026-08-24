@@ -44,9 +44,7 @@ int main() {
 
         atletas.push_back( pessoaTMP );
     }
-    
-    //rotina de calculo do IMC = peso / (altura × altura)
-    float imc;
+   
     
     for (int i = 0; i < atletas.size(); i++) {
         cout << "Nome atleta: " << atletas[i].nome << endl;
