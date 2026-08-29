@@ -1,0 +1,76 @@
+/*
+    ### 1. Cadastro de Clientes Simplificado
+    Contexto: Uma loja precisa registrar seus clientes.
+    
+    * Struct: Cliente (Código, Idade, Telefone).
+    * Menu:
+        1. Cadastrar cliente (inserir no vetor).
+        2. Listar todos os clientes cadastrados.
+        3. Sair.
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+typedef struct {
+    int codigo;
+    int idade;
+    string telefone;
+} Cliente;
+
+int main() {
+    vector<Cliente> vetorClientes;
+    int opcao;
+    int codigo, idade;
+    string telefone;
+
+    do {
+        // system("cls"); // Limpa a tela (funciona no Windows)
+        cout << "Menu:\n";
+        cout << "1. Cadastrar cliente\n";
+        cout << "2. Listar clientes\n";
+        cout << "3. Sair\n";
+        cout << "Escolha uma opcao: ";
+        cin >> opcao;
+        // Limpa o buffer de forma segura e definitiva
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        switch (opcao) {
+            case 1: 
+                cout << "Cadastro de cliente:\n";                
+
+                cout << "Informe o codigo do cliente: ";
+                cin >> codigo;
+                cout << "Informe sua idade: ";
+                cin >> idade;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                
+                cout << "Informe seu telefone: ";
+                getline(cin, telefone);
+                vetorClientes.push_back({codigo,idade,telefone});
+                cout << "Cliente cadastrado com sucesso\n";
+                break;
+            case 2: 
+                cout << "Clientes cadastrados:\n";
+                if (vetorClientes.size() == 0) {
+                    cout << "Nao ha clientes para exibir\n";
+                } else {
+                    for (int i = 0; i < vetorClientes.size(); i++) {
+                        cout << "Codigo: " << vetorClientes[i].codigo << "\n";
+                        cout << "Idade: " << vetorClientes[i].idade << "\n";
+                        cout << "Telefone: " << vetorClientes[i].telefone << "\n";
+                        cout << "-----------------------------------\n\n";
+                    } 
+                }
+                break;
+            case 3: 
+                cout << "Saindo do programa...\n";
+                break;
+            default:
+                cout << "Opcao invalida! Tente novamente.\n";
+        }
+        // system("pause"; // Pausa para o usuário ler a mensagem
+    } while (opcao != 3);
+}
